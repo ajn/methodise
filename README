@@ -1,0 +1,19 @@
+Methodise
+================
+
+Ruby on Rails gem/plugin that adds quick access to instance methods on belongs_to associations.
+
+Example:
+  
+  class Parent < ActiveRecord::Base
+    has_many :children, :class_name => 'Child', :foreign_key => :parent_id
+  end
+
+  class Child < ActiveRecord::Base
+    belongs_to :parent, :class_name => 'Parent', :foreign_key => :parent_id
+    methodise  :parent => [:name, :description]
+  end
+  
+This will create the following instance methods for Child :parent_name and :parent_description.
+
+
